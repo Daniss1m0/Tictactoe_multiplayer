@@ -8,10 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
-public class startController {
+public class resultsController {
 
     @FXML
     private ResourceBundle resources;
@@ -20,10 +20,7 @@ public class startController {
     private URL location;
 
     @FXML
-    private Button EnterButton;
-
-    @FXML
-    private TextField ID_field;
+    private ScrollPane Tabel;
 
     @FXML
     private Button backButton;
@@ -45,23 +42,7 @@ public class startController {
                 e.printStackTrace();
             }
         });
-        EnterButton.setOnAction(event -> {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
-                Parent root = loader.load();
 
-                Scene scene = new Scene(root);
-
-                Stage stage = (Stage) EnterButton.getScene().getWindow();
-
-                stage.setScene(scene);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
     }
 
 }
-
-

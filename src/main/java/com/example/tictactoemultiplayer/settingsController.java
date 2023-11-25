@@ -11,7 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class startController {
+public class settingsController {
 
     @FXML
     private ResourceBundle resources;
@@ -20,10 +20,10 @@ public class startController {
     private URL location;
 
     @FXML
-    private Button EnterButton;
+    private TextField Name_field;
 
     @FXML
-    private TextField ID_field;
+    private Button SaveButton;
 
     @FXML
     private Button backButton;
@@ -45,23 +45,7 @@ public class startController {
                 e.printStackTrace();
             }
         });
-        EnterButton.setOnAction(event -> {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
-                Parent root = loader.load();
 
-                Scene scene = new Scene(root);
-
-                Stage stage = (Stage) EnterButton.getScene().getWindow();
-
-                stage.setScene(scene);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
     }
 
 }
-
-

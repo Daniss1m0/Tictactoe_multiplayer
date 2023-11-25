@@ -47,6 +47,40 @@ public class HelloController {
                  e.printStackTrace();
              }
          });
+        ResultsButton.setOnAction(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("results.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+
+                Stage stage = (Stage) ResultsButton.getScene().getWindow();
+
+                stage.setScene(scene);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        SettingsButton.setOnAction(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("settings.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+
+                Stage stage = (Stage) SettingsButton.getScene().getWindow();
+
+                stage.setScene(scene);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        ExitButton.setOnAction(event -> {
+            Stage stage = (Stage) ExitButton.getScene().getWindow();
+            stage.close();
+        });
     }
 
 }
