@@ -20,7 +20,10 @@ public class settingsController {
     private URL location;
 
     @FXML
-    private TextField Name_field;
+    private TextField Age_field; //zmienic
+
+    @FXML
+    private TextField NickName_field;
 
     @FXML
     private Button SaveButton;
@@ -32,7 +35,7 @@ public class settingsController {
     void initialize() {
         backButton.setOnAction(event -> { //?
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("menu.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);

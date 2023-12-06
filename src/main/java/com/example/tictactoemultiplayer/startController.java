@@ -32,7 +32,7 @@ public class startController {
     void initialize() {
         backButton.setOnAction(event -> { //?
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("menu.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);

@@ -10,7 +10,7 @@
     <children>
         <AnchorPane layoutY="135.0" prefHeight="471.0" prefWidth="800.0" style="-fx-background-color: #fafafa;">
             <children>
-                <Button fx:id="SaveButton" layoutX="303.0" layoutY="236.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="194.0" text="Save">
+                <Button fx:id="SaveButton" layoutX="303.0" layoutY="279.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="194.0" text="Save">
                     <font>
                         <Font size="28.0" />
                     </font>
@@ -19,12 +19,18 @@
                     <font>
                         <Font size="22.0" />
                     </font></Button>
-                <Label layoutX="316.0" layoutY="133.0" style="-fx-background-color: #fafafa;" text="Nazwa użytkownika">
+                <Label layoutX="155.0" layoutY="83.0" style="-fx-background-color: #fafafa;" text="Nazwa użytkownika">
                     <font>
                         <Font name="Comic Sans MS" size="17.0" />
                     </font>
                 </Label>
-                <TextField fx:id="Name_field" layoutX="306.0" layoutY="182.0" prefHeight="25.0" prefWidth="194.0" promptText="Name" />
+                <TextField fx:id="NickName_field" layoutX="151.0" layoutY="129.0" prefHeight="25.0" prefWidth="160.0" promptText="NickName" />
+            <Label layoutX="536.0" layoutY="83.0" style="-fx-background-color: #fafafa;" text="Wiek">
+               <font>
+                  <Font name="Comic Sans MS" size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Age_field" layoutX="476.0" layoutY="129.0" prefHeight="25.0" prefWidth="160.0" promptText="Age" />
             </children>
         </AnchorPane>
         <Label layoutX="249.0" layoutY="14.0" text="Tictactoe" textFill="#0aeee3">

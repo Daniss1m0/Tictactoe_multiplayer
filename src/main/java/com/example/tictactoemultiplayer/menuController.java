@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class HelloController {
+public class menuController {
 
     @FXML
     private ResourceBundle resources;
@@ -20,6 +20,7 @@ public class HelloController {
 
     @FXML
     private Button ExitButton;
+
 
     @FXML
     private Button ResultsButton;
