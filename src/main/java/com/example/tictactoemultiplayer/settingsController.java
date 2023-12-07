@@ -8,7 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Spinner;
 import javafx.stage.Stage;
 
 public class settingsController {
@@ -20,7 +22,7 @@ public class settingsController {
     private URL location;
 
     @FXML
-    private TextField Age_field; //zmienic na spinner
+    private Spinner<Integer> Spinner;
 
     @FXML
     private TextField NickName_field;
@@ -33,16 +35,19 @@ public class settingsController {
 
     @FXML
     void initialize() {
+
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(3,99);
+        valueFactory.setValue(3);
+        Spinner.setValueFactory(valueFactory);
+
         SaveButton.setOnAction(event -> {
             DataBaseHandler dbHandler = new DataBaseHandler();
 
             String NickName = NickName_field.getText().trim();
-            String Age = Age_field.getText().trim();
+            Integer Age = Spinner.getValue();
 
             if(!NickName.equals("") && !Age.equals("")){
-                int ageValue = Integer.parseInt(Age);
-
-                Player player = new Player(NickName,ageValue);
+                Player player = new Player(NickName,Age);
                 dbHandler.signUpPlayer(player);
             }
             else
