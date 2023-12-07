@@ -4,6 +4,8 @@ module com.example.tictactoemultiplayer {
 
     requires com.dlsc.formsfx;
 
+    requires java.sql;
+
     opens com.example.tictactoemultiplayer to javafx.fxml;
     exports com.example.tictactoemultiplayer;
 }

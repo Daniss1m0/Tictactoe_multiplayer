@@ -7,11 +7,9 @@ public class Player {
     private int Age;
     private int Wins;
 
-    public Player(int player_ID, String nickName, int age, int wins) {
-        Player_ID = player_ID;
+    public Player(String nickName, int age) {
         NickName = nickName;
         Age = age;
-        Wins = wins;
     }
     //?
     public int getPlayer_ID() {
@@ -29,4 +27,5 @@ public class Player {
     public int getWins() {
         return Wins;
     }
+
 }

@@ -44,13 +44,13 @@ public class resultsController { //implements Initializable ?
     @FXML
     private Button backButton;
 
-    //poniewaz na razie nie mamy bazy...
+    /*poniewaz na razie nie mamy bazy...
     ObservableList<Player> list = FXCollections.observableArrayList(
             new Player(1,"Daniil",18,20),
             new Player(2,"Karol",19,11),
             new Player(3,"Sebastian",20,2000)
     );
-
+    */
     @FXML
     void initialize() {
 
@@ -59,7 +59,7 @@ public class resultsController { //implements Initializable ?
         Player_ID.setCellValueFactory(new PropertyValueFactory<Player, Integer>("Player_ID"));
         Wins.setCellValueFactory(new PropertyValueFactory<Player, Integer>("Wins"));
 
-        Table.setItems(list); //baza danych tu bedzie
+        //Table.setItems(list); //baza danych tu bedzie
 
         backButton.setOnAction(event -> { //?
             try {

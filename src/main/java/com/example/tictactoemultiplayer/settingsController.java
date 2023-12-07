@@ -33,6 +33,24 @@ public class settingsController {
 
     @FXML
     void initialize() {
+        SaveButton.setOnAction(event -> {
+            DataBaseHandler dbHandler = new DataBaseHandler();
+
+            String NickName = NickName_field.getText().trim();
+            String Age = Age_field.getText().trim();
+
+            if(!NickName.equals("") && !Age.equals("")){
+                save(NickName, Age);
+
+                int ageValue = Integer.parseInt(Age);
+
+                Player player = new Player(NickName,ageValue);
+                dbHandler.signUpPlayer(player);
+            }
+            else
+                System.out.println("Error!");
+
+        });
         backButton.setOnAction(event -> { //?
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("menu.fxml"));
@@ -48,6 +66,10 @@ public class settingsController {
                 e.printStackTrace();
             }
         });
+
+    }
+
+    private void save(String nickName, String age) {
 
     }
 
