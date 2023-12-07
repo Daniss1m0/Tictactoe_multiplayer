@@ -2,14 +2,14 @@ package com.example.tictactoemultiplayer;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,7 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class resultsController { //implements Initializable ?
+public class resultsController {
 
     @FXML
     private ResourceBundle resources;
@@ -44,13 +44,6 @@ public class resultsController { //implements Initializable ?
     @FXML
     private Button backButton;
 
-    /*poniewaz na razie nie mamy bazy...
-    ObservableList<Player> list = FXCollections.observableArrayList(
-            new Player(1,"Daniil",18,20),
-            new Player(2,"Karol",19,11),
-            new Player(3,"Sebastian",20,2000)
-    );
-    */
     @FXML
     void initialize() {
 
@@ -59,7 +52,7 @@ public class resultsController { //implements Initializable ?
         Player_ID.setCellValueFactory(new PropertyValueFactory<Player, Integer>("Player_ID"));
         Wins.setCellValueFactory(new PropertyValueFactory<Player, Integer>("Wins"));
 
-        //Table.setItems(list); //baza danych tu bedzie
+        loadDataFromDatabase();
 
         backButton.setOnAction(event -> { //?
             try {
@@ -77,6 +70,30 @@ public class resultsController { //implements Initializable ?
             }
         });
 
+    }
+
+    private void loadDataFromDatabase() {
+        DataBaseHandler dbHandler = new DataBaseHandler();
+        ObservableList<Player> playerList = FXCollections.observableArrayList();
+
+        try {
+            ResultSet resultSet = dbHandler.getPlayer(new Player());
+
+            while (resultSet.next()) {
+                int playerID = ((ResultSet) resultSet).getInt(Const.PLAYERS_ID);
+                String nickName = resultSet.getString(Const.PLAYERS_NICKNAME);
+                int age = resultSet.getInt(Const.PLAYERS_AGE);
+                int wins = resultSet.getInt(Const.PLAYERS_WINS);
+
+                Player player = new Player(playerID, nickName, age, wins);
+                playerList.add(player);
+            }
+
+            Table.setItems(playerList);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

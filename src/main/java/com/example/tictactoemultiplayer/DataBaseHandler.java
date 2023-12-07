@@ -1,9 +1,6 @@
 package com.example.tictactoemultiplayer;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DataBaseHandler extends Configs {
 
@@ -29,11 +26,26 @@ public class DataBaseHandler extends Configs {
 
             prST.executeUpdate();
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public ResultSet getPlayer(Player player){
+        ResultSet resSet = null;
+
+        String select = "SELECT * FROM " + Const.PLAYERS_TABLE;
+
+        try {
+            PreparedStatement prST = getDbConnection().prepareStatement(select);
+            resSet = prST.executeQuery();
 
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        return resSet;
     }
 }

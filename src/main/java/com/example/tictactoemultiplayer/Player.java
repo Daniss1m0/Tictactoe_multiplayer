@@ -7,11 +7,21 @@ public class Player {
     private int Age;
     private int Wins;
 
+    public Player() {}
+
+    //konstruktor dla Inserta (moze zmienimy)
     public Player(String nickName, int age) {
         NickName = nickName;
         Age = age;
     }
-    //?
+    //konstruktor dla Selecta
+    public Player(int PlayerID, String nickName, int age, int wins) {
+        Player_ID = PlayerID;
+        NickName = nickName;
+        Age = age;
+        Wins = wins;
+    }
+
     public int getPlayer_ID() {
         return Player_ID;
     }
@@ -27,5 +37,7 @@ public class Player {
     public int getWins() {
         return Wins;
     }
+
+    //metody do gry?
 
 }

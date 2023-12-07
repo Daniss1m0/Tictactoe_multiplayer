@@ -20,7 +20,7 @@ public class settingsController {
     private URL location;
 
     @FXML
-    private TextField Age_field; //zmienic
+    private TextField Age_field; //zmienic na spinner
 
     @FXML
     private TextField NickName_field;
@@ -40,8 +40,6 @@ public class settingsController {
             String Age = Age_field.getText().trim();
 
             if(!NickName.equals("") && !Age.equals("")){
-                save(NickName, Age);
-
                 int ageValue = Integer.parseInt(Age);
 
                 Player player = new Player(NickName,ageValue);
@@ -66,10 +64,6 @@ public class settingsController {
                 e.printStackTrace();
             }
         });
-
-    }
-
-    private void save(String nickName, String age) {
 
     }
 
