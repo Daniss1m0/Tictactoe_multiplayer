@@ -1,6 +1,8 @@
-package com.example.tictactoemultiplayer;
+package ReplicatedClasses;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
 
     private int Player_ID;
     private String NickName;

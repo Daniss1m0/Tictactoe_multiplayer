@@ -1,4 +1,4 @@
-package com.example.tictactoemultiplayer;
+package ClientFiles;
 
 import java.io.IOException;
 import java.net.URL;
@@ -64,6 +64,7 @@ public class menuController {
             }
         });
         SettingsButton.setOnAction(event -> {
+            //przyklad uzycia: Client.localClient.sendMessage();
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("settings.fxml"));
                 Parent root = loader.load();

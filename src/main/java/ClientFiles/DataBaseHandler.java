@@ -1,4 +1,6 @@
-package com.example.tictactoemultiplayer;
+package ClientFiles;
+
+import ReplicatedClasses.Player;
 
 import java.sql.*;
 

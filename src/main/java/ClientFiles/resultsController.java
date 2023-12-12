@@ -1,11 +1,13 @@
-package com.example.tictactoemultiplayer;
+package ClientFiles;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import ReplicatedClasses.CommandClass;
+import ReplicatedClasses.Commands;
+import ReplicatedClasses.Player;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -27,7 +29,7 @@ public class resultsController {
     private URL location;
 
     @FXML
-    private TableView<Player> Table;
+    private TableView<Player> Table; // jest tylko jedna tablica wiec moze byc static
 
     @FXML
     private TableColumn<Player, Integer> Age;
@@ -44,6 +46,8 @@ public class resultsController {
     @FXML
     private Button backButton;
 
+    public static resultsController singletone;
+
     @FXML
     void initialize() {
 
@@ -52,7 +56,9 @@ public class resultsController {
         Player_ID.setCellValueFactory(new PropertyValueFactory<Player, Integer>("Player_ID"));
         Wins.setCellValueFactory(new PropertyValueFactory<Player, Integer>("Wins"));
 
-        loadDataFromDatabase();
+        // wysyla wiadomosc do bazy danych
+        Client.localClient.sendMessage(new CommandClass(Commands.GetResultsCommand));
+        // w funkcji Client.listenForMessage odbiera wiadomosc i wykonuje odpowiednie operacje
 
         backButton.setOnAction(event -> { //?
             try {
@@ -70,30 +76,18 @@ public class resultsController {
             }
         });
 
+        singletone=this;
+
     }
 
-    private void loadDataFromDatabase() {
+    public void loadDataFromDatabase(List<Player> playerList) { // metoda statyczna zeby mogla byc wywolana z klasy Client
         DataBaseHandler dbHandler = new DataBaseHandler();
-        ObservableList<Player> playerList = FXCollections.observableArrayList();
+        ObservableList<Player> fxCollectionsPlrList = FXCollections.observableArrayList();
 
-        try {
-            ResultSet resultSet = dbHandler.getPlayer(new Player());
-
-            while (resultSet.next()) {
-                int playerID = ((ResultSet) resultSet).getInt(Const.PLAYERS_ID);
-                String nickName = resultSet.getString(Const.PLAYERS_NICKNAME);
-                int age = resultSet.getInt(Const.PLAYERS_AGE);
-                int wins = resultSet.getInt(Const.PLAYERS_WINS);
-
-                Player player = new Player(playerID, nickName, age, wins);
-                playerList.add(player);
-            }
-
-            Table.setItems(playerList);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+        for(Player plr: playerList){
+            fxCollectionsPlrList.add(plr);
         }
+        Table.setItems(fxCollectionsPlrList);
     }
 
 }

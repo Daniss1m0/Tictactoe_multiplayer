@@ -71,7 +71,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.example.tictactoemultiplayer/com.example.tictactoemultiplayer.Main
+                                com.example.tictactoemultiplayer/ClientFiles.Main
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

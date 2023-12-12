@@ -6,6 +6,8 @@ module com.example.tictactoemultiplayer {
 
     requires java.sql;
 
-    opens com.example.tictactoemultiplayer to javafx.fxml;
-    exports com.example.tictactoemultiplayer;
+    opens ClientFiles to javafx.fxml;
+    exports ClientFiles;
+    exports ReplicatedClasses;
+    opens ReplicatedClasses to javafx.fxml;
 }
