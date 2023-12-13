@@ -1,6 +1,7 @@
 package ReplicatedClasses;
 
 import java.io.Serializable;
+import ClientFiles.Board;
 
 public class Player implements Serializable {
 
@@ -9,6 +10,22 @@ public class Player implements Serializable {
     private int Age;
     private int Wins;
 
+    char mark;
+    public static Board board;
+
+    public Player(char mark){
+        this.mark = mark;
+    }
+
+    public void play(int x, int y){
+        board.set(x,y,mark);
+    }
+    public char getMark(){
+        return mark;
+    }
+    public void setMark(char mark){
+        this.mark = mark;
+    }
     public Player() {}
 
     //konstruktor dla Inserta (moze zmienimy)
