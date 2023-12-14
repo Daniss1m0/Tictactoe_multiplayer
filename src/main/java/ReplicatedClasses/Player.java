@@ -11,13 +11,12 @@ public class Player implements Serializable {
     private int Wins;
 
     char mark;
-    public static Board board;
 
     public Player(char mark){
         this.mark = mark;
     }
 
-    public void play(int x, int y){
+    public void play(int x, int y, Board board){
         board.set(x,y,mark);
     }
     public char getMark(){
@@ -56,7 +55,5 @@ public class Player implements Serializable {
     public int getWins() {
         return Wins;
     }
-
-    //metody do gry?
 
 }

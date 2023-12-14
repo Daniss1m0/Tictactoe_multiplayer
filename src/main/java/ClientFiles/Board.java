@@ -23,7 +23,7 @@ public class Board {
         return counter == 9;
     }
 
-    public String[] dectectwin() {
+    public String[] detectwin() {
         String[] sequence;
         for (int i = 0; i < 3; i++)
             if (grid[i][0] == grid[i][1] && grid[i][0] == grid[i][2])
@@ -66,5 +66,11 @@ public class Board {
     }
     public boolean isEmpty(int x, int y){
         return grid[x][y] == '.';
+    }
+    public void reset() {
+        counter = 0;
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                grid[i][j] = '.';
     }
 }

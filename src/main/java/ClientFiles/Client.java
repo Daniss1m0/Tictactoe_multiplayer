@@ -29,7 +29,7 @@ public class Client {
         try {
             System.out.println("proba wyslania wiadomosci: "+command.getCommand());
             outputStream.writeObject(command);
-            outputStream.flush();
+            //outputStream.flush();
             System.out.println("wiadomosc "+command.getCommand()+" zostala wyslana do serwera");
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -42,6 +42,7 @@ public class Client {
             while (socket.isConnected()){
                 try {
                     try {
+                        System.out.println("klient slucha!");
                         Input_From_Server msgFromServer = (Input_From_Server) inputStream.readObject();
                         //System.out.println(msgFromServer.getClass());
                         System.out.println(msgFromServer.getInfoType());
@@ -71,6 +72,7 @@ public class Client {
     }
 
     public void closeEverything(Socket socket, ObjectInputStream objectInputStream, ObjectOutputStream objectOutputStream){
+        System.out.println("klient rozlaczany");
         try {
             if(objectInputStream!=null){
                 objectInputStream.close();
