@@ -10,22 +10,13 @@ public class Player implements Serializable {
     private int Age;
     private int Wins;
 
-    char mark;
+    private char mark;
+
+    public Player() {}
 
     public Player(char mark){
         this.mark = mark;
     }
-
-    public void play(int x, int y, Board board){
-        board.set(x,y,mark);
-    }
-    public char getMark(){
-        return mark;
-    }
-    public void setMark(char mark){
-        this.mark = mark;
-    }
-    public Player() {}
 
     //konstruktor dla Inserta (moze zmienimy)
     public Player(String nickName, int age) {
@@ -38,6 +29,16 @@ public class Player implements Serializable {
         NickName = nickName;
         Age = age;
         Wins = wins;
+    }
+
+    public void play(int x, int y, Board board){
+        board.set(x,y,mark);
+    }
+    public char getMark(){
+        return mark;
+    }
+    public void setMark(char mark){
+        this.mark = mark;
     }
 
     public int getPlayer_ID() {

@@ -45,7 +45,7 @@
                   <Font name="Comic Sans MS" size="17.0" />
                </font>
             </Label>
-            <GridPane fx:id="Map" layoutX="252.0" layoutY="50.0" prefHeight="295.0" prefWidth="296.0" style="-fx-background-color: #f50000;">
+            <GridPane fx:id="Map" layoutX="252.0" layoutY="50.0" prefHeight="295.0" prefWidth="296.0" style="-fx-background-color: #00ff00;">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
