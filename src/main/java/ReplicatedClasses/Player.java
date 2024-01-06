@@ -1,9 +1,12 @@
 package ReplicatedClasses;
 
+import java.io.Serial;
 import java.io.Serializable;
 import ClientFiles.Board;
 
 public class Player implements Serializable {
+
+    @Serial private static final long serialVersionUID = 11;
 
     private int Player_ID;
     private String NickName;

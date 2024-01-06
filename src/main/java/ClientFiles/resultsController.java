@@ -81,7 +81,7 @@ public class resultsController {
     }
 
     public void loadDataFromDatabase(List<Player> playerList) { // metoda statyczna zeby mogla byc wywolana z klasy Client
-        DataBaseHandler dbHandler = new DataBaseHandler();
+        //DataBaseHandler dbHandler = new DataBaseHandler();
         ObservableList<Player> fxCollectionsPlrList = FXCollections.observableArrayList();
 
         for(Player plr: playerList){
