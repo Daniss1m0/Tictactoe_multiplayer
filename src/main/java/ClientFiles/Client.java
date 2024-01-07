@@ -1,9 +1,6 @@
 package ClientFiles;
 
-import ReplicatedClasses.CommandClass;
-import ReplicatedClasses.Input_From_Server;
-import ReplicatedClasses.ResultsOutput;
-import ReplicatedClasses.SerwerInfo;
+import ReplicatedClasses.*;
 
 import java.io.*;
 import java.net.Socket;
@@ -46,7 +43,7 @@ public class Client {
                         Input_From_Server msgFromServer = (Input_From_Server) inputStream.readObject();
                         //System.out.println(msgFromServer.getClass());
                         System.out.println(msgFromServer.getInfoType());
-                        switch (msgFromServer.getInfoType()){ //**jakis null wychodzi moze trzeba zrobic getInfoType metode
+                        switch (msgFromServer.getInfoType()){
                             case "ResultsOutput":
                                 ResultsOutput input=(ResultsOutput) msgFromServer;
                                 resultsController.singletone.loadDataFromDatabase(input.playerList);
@@ -55,6 +52,9 @@ public class Client {
                             case "test":
                                 System.out.println("klient dostal wiadomosc");
                                 break;
+
+                            case Commands.ready:
+
 
                             default:
                                 break;
