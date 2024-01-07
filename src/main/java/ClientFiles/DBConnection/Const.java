@@ -1,4 +1,4 @@
-package ClientFiles;
+package ClientFiles.DBConnection;
 
 public class Const {
     public static final String PLAYERS_TABLE = "players";

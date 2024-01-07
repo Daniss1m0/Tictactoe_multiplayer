@@ -1,10 +1,11 @@
-package ClientFiles;
+package ClientFiles.Controllers;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import ClientFiles.Board;
 import ReplicatedClasses.Player;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -74,7 +75,7 @@ public class gameController {
 
         backButton.setOnAction(event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("start.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFiles/start.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);

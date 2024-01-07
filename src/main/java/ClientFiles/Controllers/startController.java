@@ -1,4 +1,4 @@
-package ClientFiles;
+package ClientFiles.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,7 +32,7 @@ public class startController {
     void initialize() {
         backButton.setOnAction(event -> { //?
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("menu.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFiles/menu.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);
@@ -47,7 +47,7 @@ public class startController {
         });
         EnterButton.setOnAction(event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFiles/game.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);

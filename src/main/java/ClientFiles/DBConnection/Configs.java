@@ -1,4 +1,4 @@
-package ClientFiles;
+package ClientFiles.DBConnection;
 
 public class Configs {
     protected String dbHost = "localhost";

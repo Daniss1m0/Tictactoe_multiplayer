@@ -1,4 +1,4 @@
-package ClientFiles;
+package ClientFiles.DBConnection;
 
 import ReplicatedClasses.Player;
 

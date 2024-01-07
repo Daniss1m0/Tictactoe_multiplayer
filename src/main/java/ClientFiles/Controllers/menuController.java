@@ -1,4 +1,4 @@
-package ClientFiles;
+package ClientFiles.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,7 +35,7 @@ public class menuController {
     void initialize() {
          StartButton.setOnAction(event -> {
              try {
-                 FXMLLoader loader = new FXMLLoader(getClass().getResource("start.fxml"));
+                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFiles/start.fxml"));
                  Parent root = loader.load();
 
                  Scene scene = new Scene(root);
@@ -50,7 +50,7 @@ public class menuController {
          });
         ResultsButton.setOnAction(event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("results.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFiles/results.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);
@@ -66,7 +66,7 @@ public class menuController {
         SettingsButton.setOnAction(event -> {
             //przyklad uzycia: Client.localClient.sendMessage();
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("settings.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFiles/settings.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);

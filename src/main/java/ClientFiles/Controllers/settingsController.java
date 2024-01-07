@@ -1,9 +1,10 @@
-package ClientFiles;
+package ClientFiles.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import ClientFiles.DBConnection.DataBaseHandler;
 import ReplicatedClasses.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -58,7 +59,7 @@ public class settingsController {
         });
         backButton.setOnAction(event -> { //?
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("menu.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFiles/menu.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);
