@@ -1,5 +1,6 @@
 package ClientFiles;
 
+import ClientFiles.Controllers.gameController;
 import ClientFiles.Controllers.resultsController;
 import ReplicatedClasses.*;
 
@@ -11,6 +12,8 @@ public class Client {
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
 
+    public String playerName;
+    public long roomId;
     public static Client localClient;
 
     public Client(Socket socket){
@@ -37,7 +40,7 @@ public class Client {
     public void  listenForMessage(){
         new Thread(()->{
 
-            while (socket.isConnected()){
+            while (socket.isConnected() && !socket.isClosed()){
                 try {
                     try {
                         System.out.println("klient slucha: ");
@@ -55,6 +58,28 @@ public class Client {
                                 break;
 
                             case Commands.ready:
+                                boolean isPlr1= msgFromServer.isPlr1();
+                                boolean isReady=msgFromServer.isReady();
+                                System.out.println("prohuje ustawic ready dla: "+isReady);
+                                gameController.localGameController.setReady(isPlr1,isReady);
+                                break;
+
+                            case Commands.joinRoom:
+                                String plrName=msgFromServer.getPlayerName();
+                                boolean isplr1= msgFromServer.isPlr1(); //zamiast idPlr1 jest isplr1 bo nie moze byc to samo w 2 casach
+                                gameController.localGameController.setPlrName(isplr1,plrName);
+                                break;
+
+                            case Commands.restart:
+                                gameController.localGameController.handleRestart();
+                                break;
+
+                            case Commands.setChar:
+                                int row=msgFromServer.getCharX();
+                                int col= msgFromServer.getCharY();
+                                System.out.println("GRACZ DOSTAL WIADOMOSC SET CHAR OD SERWERA");
+                                gameController.localGameController.handleMove(row,col);
+                                break;
 
 
                             default:

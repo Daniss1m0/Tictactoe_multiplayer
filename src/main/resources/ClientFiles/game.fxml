@@ -12,12 +12,12 @@
     <children>
         <AnchorPane layoutY="136.0" prefHeight="471.0" prefWidth="800.0" style="-fx-background-color: #fafafa;">
             <children>
-                <Button fx:id="Ready1Button" layoutX="29.0" layoutY="197.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="194.0" text="Ready?">
+                <Button fx:id="Ready1Button" layoutX="29.0" layoutY="197.0" mnemonicParsing="false" onAction="#onPlr1Ready" prefHeight="58.0" prefWidth="194.0" text="Ready?">
                     <font>
                         <Font size="28.0" />
                     </font>
                 </Button>
-                <Button fx:id="restartButton" layoutX="29.0" layoutY="401.0" onAction="#handleRestart" prefHeight="46.0" prefWidth="105.0" text="Restart" textFill="RED">
+                <Button fx:id="restartButton" layoutX="29.0" layoutY="401.0" onAction="#onRestart" prefHeight="46.0" prefWidth="105.0" text="Restart" textFill="RED">
                <font>
                   <Font name="Comic Sans MS" size="20.0" />
                </font></Button>
@@ -25,12 +25,12 @@
                     <font>
                         <Font size="22.0" />
                     </font></Button>
-                <Label layoutX="43.0" layoutY="150.0" style="-fx-background-color: #fafafa;" text="(waiting for player...)">
+                <Label fx:id="plr1Text" layoutX="43.0" layoutY="150.0" style="-fx-background-color: #fafafa;" text="(waiting for player...)" textAlignment="CENTER">
                     <font>
                         <Font name="Comic Sans MS" size="17.0" />
                     </font>
                 </Label>
-                <Button fx:id="Ready2Button" layoutX="580.0" layoutY="197.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="194.0" text="Ready?">
+                <Button fx:id="Ready2Button" layoutX="580.0" layoutY="197.0" mnemonicParsing="false" onAction="#onPlr2Ready" prefHeight="58.0" prefWidth="194.0" text="Ready?">
                     <font>
                         <Font size="28.0" />
                     </font>
@@ -40,7 +40,7 @@
                   <Font name="Comic Sans MS" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="594.0" layoutY="150.0" style="-fx-background-color: #fafafa;" text="(waiting for player...)">
+            <Label fx:id="plr2Text" layoutX="594.0" layoutY="150.0" style="-fx-background-color: #fafafa;" text="(waiting for player...)" textAlignment="CENTER">
                <font>
                   <Font name="Comic Sans MS" size="17.0" />
                </font>

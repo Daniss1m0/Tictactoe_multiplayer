@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import ClientFiles.Client;
 import ClientFiles.DBConnection.DataBaseHandler;
+import ReplicatedClasses.CommandClass;
+import ReplicatedClasses.Commands;
 import ReplicatedClasses.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,8 +53,12 @@ public class settingsController {
             Integer Age = Spinner.getValue();
 
             if(!NickName.equals("") && !Age.equals("")){
-                Player player = new Player(NickName,Age);
-                dbHandler.signUpPlayer(player);
+
+                CommandClass newCommand=new CommandClass(Commands.registerPlayer);
+                newCommand.setPlayerName(NickName);
+                newCommand.setPlayerAge(Age);
+                Client.localClient.sendMessage(newCommand);
+                Client.localClient.playerName=NickName;
             }
             else
                 System.out.println("Error!");
