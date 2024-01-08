@@ -6,7 +6,10 @@ import ReplicatedClasses.*;
 
 import java.io.*;
 import java.net.Socket;
-
+/**
+ * The Client class handles the communication with the server.
+ * It includes methods for sending and receiving messages, as well as handling various commands from the server.
+ */
 public class Client {
     private Socket socket;
     private ObjectInputStream inputStream;
@@ -15,7 +18,11 @@ public class Client {
     public String playerName;
     public long roomId;
     public static Client localClient;
-
+    /**
+     * Constructs a new Client instance with the given socket.
+     *
+     * @param socket The socket for communication with the server.
+     */
     public Client(Socket socket){
         try {
             this.socket=socket;
@@ -25,7 +32,11 @@ public class Client {
             closeEverything(socket,inputStream,outputStream);
         }
     }
-
+    /**
+     * Sends a command to the server.
+     *
+     * @param command The command to be sent to the server.
+     */
     public void sendMessage(CommandClass command){
         try {
             System.out.println("proba wyslania wiadomosci: "+command.getCommand());
@@ -36,7 +47,9 @@ public class Client {
             throw new RuntimeException(e);
         }
     }
-
+    /**
+     * Listens for messages from the server and processes them accordingly.
+     */
     public void  listenForMessage(){
         new Thread(()->{
 
@@ -96,7 +109,13 @@ public class Client {
 
         }).start();
     }
-
+    /**
+     * Closes all communication-related resources.
+     *
+     * @param socket           The socket to be closed.
+     * @param objectInputStream The input stream to be closed.
+     * @param objectOutputStream The output stream to be closed.
+     */
     public void closeEverything(Socket socket, ObjectInputStream objectInputStream, ObjectOutputStream objectOutputStream){
         System.out.println("klient rozlaczony");
         try {
@@ -113,6 +132,10 @@ public class Client {
             e.printStackTrace();
         }
     }
+    /**
+     * Starts the client by connecting to the server, setting up the client instance, and listening for messages.
+     * This is the first method to be called for the client functionality.
+     */
     public static void startClient(){ // pierwsza wywolywana metoda
         try{
             Socket socket = new Socket(SerwerInfo.ServerIP,SerwerInfo.ServerPort);

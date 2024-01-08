@@ -1,5 +1,7 @@
 package ClientFiles.DBConnection;
-
+/**
+ * The Configs class holds configuration details for the database connection.
+ */
 public class Configs {
     protected String dbHost = "localhost";
     protected String dbPort = "3306";

@@ -18,14 +18,10 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Spinner;
 import javafx.stage.Stage;
-
+/**
+ * The `settingsController` class controls the behavior of the settings view in the application.
+ */
 public class settingsController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Spinner<Integer> Spinner;
@@ -38,10 +34,12 @@ public class settingsController {
 
     @FXML
     private Button backButton;
-
+    /**
+     * Initializes the settings view.
+     */
     @FXML
     void initialize() {
-
+        // Set up Spinner with a value factory
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(3,99);
         valueFactory.setValue(3);
         Spinner.setValueFactory(valueFactory);

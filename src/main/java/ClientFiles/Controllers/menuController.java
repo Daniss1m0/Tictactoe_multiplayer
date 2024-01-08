@@ -9,14 +9,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
+/**
+ * The `menuController` class controls the behavior of the menu view in the application.
+ */
 public class menuController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button ExitButton;
@@ -30,7 +26,9 @@ public class menuController {
 
     @FXML
     private Button StartButton;
-
+    /**
+     * Initializes the menu view.
+     */
     @FXML
     void initialize() {
          StartButton.setOnAction(event -> {

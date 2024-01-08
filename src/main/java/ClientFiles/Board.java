@@ -1,10 +1,14 @@
 package ClientFiles;
-
+/**
+ * The Board class represents the Tic Tac Toe game board and provides methods for managing the game state.
+ */
 public class Board {
 
     private final char[][] grid;
     private int counter;
-
+    /**
+     * Enumeration representing the possible win conditions for the game.
+     */
     public enum WinCondition {
         NONE, ROW, COLUMN, DIAGONAL_RIGHT, DIAGONAL_LEFT
     }
@@ -14,12 +18,16 @@ public class Board {
     public WinCondition getWinCondition() {
         return winCondition;
     }
-
+    /**
+     * Constructor to initialize the game board.
+     */
     public Board() {
         grid = new char[3][3];
         reset();
     }
-
+    /**
+     * Resets the game board to its initial state.
+     */
     public void reset() {
         counter = 0;
         winCondition = WinCondition.NONE;
@@ -27,15 +35,29 @@ public class Board {
             for (int j = 0; j < 3; j++)
                 grid[i][j] = '.';
     }
-
+    /**
+     * Checks if a specific cell on the board is empty.
+     *
+     * @param x The row index.
+     * @param y The column index.
+     * @return True if the cell is empty, false otherwise.
+     */
     public boolean isEmpty(int x, int y){
         return grid[x][y] == '.';
     }
-
+    /**
+     * Checks if the game board is full.
+     *
+     * @return True if the board is full, false otherwise.
+     */
     public boolean isFull() {
         return counter == 9;
     }
-
+    /**
+     * Detects if there is a win condition on the board and returns the winning sequence.
+     *
+     * @return An array of strings representing the winning sequence, or null if there is no win.
+     */
     public String[] detectWin() {
         StringBuilder sequence = new StringBuilder();
         for (int i = 0; i < 3; i++)
@@ -74,12 +96,22 @@ public class Board {
             }
         return null;
     }
-
+    /**
+     * Sets the mark for a specific cell on the board.
+     *
+     * @param x    The row index.
+     * @param y    The column index.
+     * @param mark The mark to be set.
+     */
     public void set(int x, int y, char mark) {
         grid[x][y] = mark;
         counter += 1;
     }
-
+    /**
+     * Gets the current state of the game board.
+     *
+     * @return A 2D array representing the game board.
+     */
     public char[][] getGrid(){
         return grid;
     }

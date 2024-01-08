@@ -1,5 +1,7 @@
 package ClientFiles.DBConnection;
-
+/**
+ * The Const class holds constant values representing database table names and column names.
+ */
 public class Const {
     public static final String PLAYERS_TABLE = "players";
 

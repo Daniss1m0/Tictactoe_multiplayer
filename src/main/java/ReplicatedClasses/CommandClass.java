@@ -3,13 +3,16 @@ package ReplicatedClasses;
 
 import java.io.Serial;
 import java.io.Serializable;
-
+/**
+ * The CommandClass class represents a serializable command object used in communication between the client and server.
+ * It encapsulates various parameters and commands for different actions.
+ */
 public class CommandClass implements Serializable {
     @Serial private static final long serialVersionUID = 12;
-
-
+    /**
+     * The command string representing the action to be taken.
+     */
     public String command="";
-    public int squareNumber=0; // square from tic tac toe board
     public  String playerName;
     public  int playerAge;
     public int charX;
@@ -17,8 +20,15 @@ public class CommandClass implements Serializable {
 
 
     public long RoomId;
-
-    public CommandClass(){} // konstruktor domyslny
+    /**
+     * Default constructor for the CommandClass.
+     */
+    public CommandClass(){}
+    /**
+     * Parameterized constructor for the CmmandClass.
+     *
+     * @param command The command string representing the action to be taken.
+     */
     public CommandClass(String command) {
         this.command = command;
     }
@@ -27,52 +37,20 @@ public class CommandClass implements Serializable {
         return command;
     }
 
-    public void setCommand(String command) {
-        this.command = command;
-    }
-
-    public int getSquareNumber() {
-        return squareNumber;
-    }
-
-    public void setSquareNumber(int squareNumber) {
-        this.squareNumber = squareNumber;
-    }
-
-    public String getPlayerName() {
-        return playerName;
-    }
-
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
-    }
-
-    public long getRoomId() {
-        return RoomId;
     }
 
     public void setRoomId(long roomId) {
         RoomId = roomId;
     }
 
-    public int getPlayerAge() {
-        return playerAge;
-    }
-
     public void setPlayerAge(int playerAge) {
         this.playerAge = playerAge;
     }
 
-    public int getCharX() {
-        return charX;
-    }
-
     public void setCharX(int charX) {
         this.charX = charX;
-    }
-
-    public int getCharY() {
-        return charY;
     }
 
     public void setCharY(int charY) {

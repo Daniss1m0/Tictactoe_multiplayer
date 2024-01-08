@@ -2,11 +2,14 @@ package ReplicatedClasses;
 
 import java.io.Serial;
 import java.io.Serializable;
-
-public class Input_From_Server implements Serializable { // klasa sluzaca do sprawdzania do jakiej klasy trzeba rzutowac obiekt
+/**
+ * The Input_From_Server class represents information received from the server.
+ * It is used to determine the type of information and facilitate proper casting of objects.
+ * This class implements Serializable to support object serialization.
+ */
+public class Input_From_Server implements Serializable {
     @Serial
     private static final long serialVersionUID = 13;
-
 
     public String infoType;
     public String playerName;
@@ -17,56 +20,57 @@ public class Input_From_Server implements Serializable { // klasa sluzaca do spr
     public boolean isReady;
 
     public boolean restartBoard;
-
+    /**
+     * Default constructor for the {@code Input_From_Server} class.
+     */
     public Input_From_Server(){}
-    public Input_From_Server(String infoType) {
-        this.infoType = infoType;
-    }
-
+    /**
+     * Gets the type of information.
+     *
+     * @return The type of information.
+     */
     public String getInfoType() {
         return infoType;
     }
-    public void setInfoType(String infoType) {
-        this.infoType = infoType;
-    }
-
+    /**
+     * Gets the player's name associated with the information.
+     *
+     * @return The player's name.
+     */
     public String getPlayerName() {
         return playerName;
     }
-
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
-
+    /**
+     * Gets the x-coordinate of a character on the game board.
+     *
+     * @return The x-coordinate.
+     */
     public int getCharX() {
         return charX;
     }
-
-    public void setCharX(int charX) {
-        this.charX = charX;
-    }
-
+    /**
+     * Gets the y-coordinate of a character on the game board.
+     *
+     * @return The Y-coordinate.
+     */
     public int getCharY() {
         return charY;
     }
-
-    public void setCharY(int charY) {
-        this.charY = charY;
-    }
-
+    /**
+     * Checks if the player is Player 1.
+     *
+     * @return true if the player is Player 1, {@code false} otherwise.
+     */
     public boolean isPlr1() {
         return isPlr1;
     }
-
-    public void setPlr1(boolean plr1) {
-        isPlr1 = plr1;
-    }
-
+    /**
+     * Checks if the player is ready.
+     *
+     * @return true if the player is ready, {@code false} otherwise.
+     */
     public boolean isReady() {
         return isReady;
     }
 
-    public void setReady(boolean ready) {
-        isReady = ready;
-    }
 }

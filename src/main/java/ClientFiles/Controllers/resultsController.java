@@ -20,17 +20,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
+/**
+ * The `resultsController` class controls the behavior of the results view in the application.
+ */
 public class resultsController {
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private TableView<Player> Table; // jest tylko jedna tablica wiec moze byc static
+    private TableView<Player> Table;
 
     @FXML
     private TableColumn<Player, Integer> Age;
@@ -46,9 +42,11 @@ public class resultsController {
 
     @FXML
     private Button backButton;
-
+    // Singleton instance for the resultsController
     public static resultsController singletone;
-
+    /**
+     * Initializes the results view.
+     */
     @FXML
     void initialize() {
 
@@ -80,7 +78,10 @@ public class resultsController {
         singletone=this;
 
     }
-
+    /**
+     * Loads data from the received player list and updates the TableView.
+     * @param playerList The list of players received from the server.
+     */
     public void loadDataFromDatabase(List<Player> playerList) { // metoda statyczna zeby mogla byc wywolana z klasy Client
         //DataBaseHandler dbHandler = new DataBaseHandler();
         ObservableList<Player> fxCollectionsPlrList = FXCollections.observableArrayList();

@@ -25,7 +25,10 @@ import javafx.scene.image.ImageView;
 
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
+/**
+ * The `gameController` class controls the behavior of the game view in the Tic Tac Toe application.
+ * It manages the game board, player turns, and interactions between the client and server.
+ */
 public class gameController {
 
     @FXML
@@ -74,15 +77,20 @@ public class gameController {
 
     public static gameController localGameController;
 
-    //todo jezeli obaj nie sa ready to nie da sie ustawiac figur
-    // replikacja figut
-
-
+    /**
+     * Sets whether the local player is Player 1 or Player 2.
+     *
+     * @param is True if the local player is Player 1, false otherwise.
+     */
     public void setIsPlr1Locally(boolean is)
     {
         this.isPlr1Locally=is;
     }
-
+    /**
+     * Sets the name for Player 1.
+     *
+     * @param name The name of Player 1.
+     */
     public void setPlr1Name(String name)
     {
         System.out.println("USTAWIA IMIE GRACZA 1: "+name);
@@ -91,7 +99,11 @@ public class gameController {
         setIsPlr1Locally(true);
         System.out.println("set plr1 text: "+name);
     }
-
+    /**
+     * Sets the name for Player 2.
+     *
+     * @param name The name of Player 2.
+     */
     public void setPlr2Name(String name)
     {
         System.out.println("USTAWIA IMIE GRACZA 2: "+name);
@@ -100,19 +112,28 @@ public class gameController {
         setIsPlr1Locally(false);
         System.out.println("set plr2 text: "+name);
     }
-
+    /**
+     * Sets the label for Player 1 when leaving the game.
+     */
     public void plr1Leave()
     {
         plr1Text.setText("(waiting for player...)");
         this.plr1Name="";
     }
-
+    /**
+     * Sets the label for Player 2 when leaving the game.
+     */
     public void plr2Leave()
     {
         plr2Text.setText("(waiting for player...)");
         this.plr2Name="";
     }
-
+    /**
+     * Sets the name for a player based on whether they are Player 1 or Player 2.
+     *
+     * @param isPlr1 True if the player is Player 1, false otherwise.
+     * @param hisName The name of the player.
+     */
     public void setPlrName(boolean isPlr1, String hisName)
     {
         Platform.runLater(()->{
@@ -123,7 +144,12 @@ public class gameController {
             }
         });
     }
-
+    /**
+     * Sets the ready status for a player based on whether they are Player 1 or Player 2.
+     *
+     * @param isPlr1 True if the player is Player 1, false otherwise.
+     * @param isReady True if the player is ready, false otherwise.
+     */
     public void setReady(boolean isPlr1, boolean isReady)
     {
         Platform.runLater(()->{
@@ -151,7 +177,9 @@ public class gameController {
             }
         });
     }
-
+    /**
+     * Initializes the game controller. Sets up the game board, players, and button actions.
+     */
     @FXML
     void initialize() { //zmienic konstruktor zeby nie tworzyl nowych graczej, a bral juz istniejacych
         localGameController=this;
@@ -199,7 +227,9 @@ public class gameController {
         });
 
     }
-
+    /**
+     * Handles the ready status of Player 1.
+     */
     public void onPlr1Ready()
     {
         if(isPlr1Locally)
@@ -207,7 +237,9 @@ public class gameController {
             sendReadyCommand();
         }
     }
-
+    /**
+     * Handles the ready status of Player 2.
+     */
     public void onPlr2Ready()
     {
         if(!isPlr1Locally)
@@ -215,24 +247,38 @@ public class gameController {
             sendReadyCommand();
         }
     }
-
+    /**
+     * Handles the restart of the game.
+     */
     public void onRestart()
     {
         sendRestartCommand();
     }
-
+    /**
+     * Sends a ready command to the server.
+     * This method is used to inform the server that the player is ready to start the game.
+     */
     private void sendReadyCommand()
     {
         CommandClass newReadyCommand=new CommandClass(Commands.ready);
         Client.localClient.sendMessage(newReadyCommand);
     }
-
+    /**
+     * Sends a restart command to the server.
+     * This method is used to inform the server that the player wants to restart the game.
+     */
     private void sendRestartCommand()
     {
         CommandClass newRestartCommand=new CommandClass(Commands.restart);
         Client.localClient.sendMessage(newRestartCommand);
     }
-
+    /**
+     * Makes a move on the game board.
+     * This method is called when a player clicks on a cell on the game board. It sends the move information to the server.
+     *
+     * @param row The row index of the clicked cell.
+     * @param col The column index of the clicked cell.
+     */
     private void makeMove(int row,int col)
     {
         if(!(plr1Ready&&plr2Ready)){return;}
@@ -249,7 +295,13 @@ public class gameController {
         newMoveMessage.setCharY(col);
         Client.localClient.sendMessage(newMoveMessage);
     }
-
+    /**
+     * Handles a move received from the server.
+     * This method is called when the server informs about a move made by a player.
+     *
+     * @param row The row index of the move.
+     * @param col The column index of the move.
+     */
     public void handleMove(int row, int col) {
         // to dzieje sie tylko po przyjsciu informacji od serwera
         System.out.println("HANDLES MOVE");
@@ -292,7 +344,9 @@ public class gameController {
             }
         });
     }
-
+    /**
+     * Handles the game restart.
+     */
     public void handleRestart() {
         Platform.runLater(()->{
             Turn.setText("Player X turn");
@@ -310,7 +364,14 @@ public class gameController {
 
         kolejPlr1=true;
     }
-
+    /**
+     * Gets the node in the GridPane at the specified row and column.
+     *
+     * @param row The row index.
+     * @param column The column index.
+     * @param gridPane The GridPane.
+     * @return The node at the specified row and column.
+     */
     public static Node getNode(final int row, final int column, GridPane gridPane) {
         Node result = null;
         ObservableList<Node> children = gridPane.getChildren();
@@ -323,6 +384,12 @@ public class gameController {
         }
         return result;
     }
+    /**
+     * Generates the file URL for the given image name.
+     *
+     * @param name The name of the image file.
+     * @return The file URL for the specified image.
+     */
     private String getURL(String name) {
         File f = new File(name);
         String absolute = f.getAbsolutePath();
@@ -330,7 +397,11 @@ public class gameController {
         return "file:" + File.separator + absolute + "src" + File.separator + "main" +
                 File.separator + "java" + File.separator + "ClientFiles" + File.separator + "Images" + File.separator + name;
     }
-
+    /**
+     * Updates the game board UI based on the provided grid.
+     *
+     * @param grid The 2D array representing the game board state.
+     */
     void update(char[][] grid) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++){

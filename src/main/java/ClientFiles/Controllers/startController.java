@@ -14,14 +14,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+/**
+ * The `startController` class controls the behavior of the start view in the application.
+ */
 public class startController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button EnterButton;
@@ -31,7 +27,9 @@ public class startController {
 
     @FXML
     private Button backButton;
-
+    /**
+     * Initializes the start view.
+     */
     @FXML
     void initialize() {
         backButton.setOnAction(event -> { //?
