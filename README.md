@@ -1,7 +1,6 @@
-# Tictactoe multiplayer
+# Tictactoe Multiplayer
 
-Projekt stanowi **klientską wersję gry „Kółko i Krzyżyk” (TicTacToe)** napisaną w języku **Java** z użyciem biblioteki **JavaFX**.  
-Gra została rozbudowana o możliwość rozgrywki wieloosobowej (multiplayer) przy użyciu serwera (dostępny w oddzielnym repozytorium).
+Projekt stanowi **klientską wersję gry „Kółko i Krzyżyk” (TicTacToe)** napisaną w języku **Java** z użyciem biblioteki **JavaFX**. Gra została rozbudowana o możliwość rozgrywki wieloosobowej (multiplayer) przy użyciu serwera (dostępny w oddzielnym repozytorium).
 
 ## Zrealizowane funkcjonalności
 
