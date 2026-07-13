@@ -10,4 +10,4 @@ Projekt stanowi **klientską wersję gry „Kółko i Krzyżyk” (TicTacToe)** 
 * Wyświetlanie zwycięzcy / remisu
 * Możliwość restartu gry po zakończeniu rundy
 
-Wersja serwera dostępna pod adresem: [Tictactoe_multiplayer_Server](https://github.com/Daniss1m0/Tictactoe_multiplayer_Server)
+Wersja serwera dostępna pod adresem: [Tictactoe_multiplayer_Server](https://github.com/kardaw2513/tic-tac-toe-Serwer)
